@@ -88,54 +88,54 @@ typedef struct Model {
       //Hk = tk matrix
     {
 
-      complex<double> ex(cos(-kx*2.), sin(-kx*2.));
+      complex<double> ex(cos(-kx*2.), sin(kx*2.));
       complex<double> emx = conj(ex);
-      complex<double> ey(cos(-ky*4.), sin(-ky*4.));
+      complex<double> ey(cos(-ky*2.), sin(-ky*2.));
       complex<double> emy = conj(ey);  
    
       //assignation of the left-half 8 by 8 tc:
-      tc(0,0)=  0.;  tc(0,1)= -t;   tc(0,2)= -t;   tc(0,3)= -tp;   
-      tc(1,0)= -t;   tc(1,1)=  0.;  tc(1,2)= -tp;  tc(1,3)= -t;  
-      tc(2,0)= -t;   tc(2,1)= -tp;  tc(2,2)=  0.;  tc(2,3)= -t;    
-      tc(3,0)= -tp;  tc(3,1)= -t;   tc(3,2)= -t;   tc(3,3)=  0.;   
-      tc(4,0)= -tpp; tc(4,1)=  0.;  tc(4,2)= -t;   tc(4,3)= -tp;   
-      tc(5,0)=  0.;  tc(5,1)= -tpp; tc(5,2)= -tp;  tc(5,3)= -t;   
-      tc(6,0)=  0.;  tc(6,1)=  0.;  tc(6,2)= -tpp; tc(6,3)=  0.;   
-      tc(7,0)=  0.;  tc(7,1)=  0.;  tc(7,2)=  0.;  tc(7,3)= -tpp;   
+      tc(0,0)=  0.;  tc(0,1)= -tp;  tc(0,2)= -t;   tc(0,3)= -tp;   
+      tc(1,0)= -tp;  tc(1,1)=  0.;  tc(1,2)= -t;   tc(1,3)= -tpp;  
+      tc(2,0)= -t;   tc(2,1)= -t;   tc(2,2)=  0.;  tc(2,3)= -t;    
+      tc(3,0)= -tp;  tc(3,1)= -tpp; tc(3,2)= -t;   tc(3,3)=  0.;   
+      tc(4,0)=  0.;  tc(4,1)= -t;   tc(4,2)= -tp;  tc(4,3)=  0.;   
+      tc(5,0)= -tpp; tc(5,1)= -tp;  tc(5,2)= -t;   tc(5,3)= -tp;   
+      tc(6,0)=  0.;  tc(6,1)=  0.;  tc(6,2)= -tp;  tc(6,3)= -t;   
+      tc(7,0)=  0.;  tc(7,1)=  0.;  tc(7,2)= -tpp; tc(7,3)=  0.;   
       
       //right-half :   
-      tc(0,4)= -tpp; tc(0,5)=  0.;  tc(0,6)=  0.;  tc(0,7)=  0.;  
-      tc(1,4)=  0.;  tc(1,5)= -tpp; tc(1,6)=  0.;  tc(1,7)=  0.;  
-      tc(2,4)= -t;   tc(2,5)= -tp;  tc(2,6)= -tpp; tc(2,7)=  0.;  
-      tc(3,4)= -tp;  tc(3,5)= -t;   tc(3,6)=  0.;  tc(3,7)= -tpp; 
-      tc(4,4)=  0.;  tc(4,5)= -t;   tc(4,6)= -t;   tc(4,7)= -tp;  
-      tc(5,4)= -t;   tc(5,5)=  0.;  tc(5,6)= -tp;  tc(5,7)= -t; 
-      tc(6,4)= -t;   tc(6,5)= -tp;  tc(6,6)=  0.;  tc(6,7)= -t;  
-      tc(7,4)= -tp;  tc(7,5)= -t;   tc(7,6)= -t;   tc(7,7)=  0.;  
+      tc(0,4)=  0.;  tc(0,5)= -tpp; tc(0,6)=  0.;  tc(0,7)=  0.;  
+      tc(1,4)= -t;   tc(1,5)= -tp;  tc(1,6)=  0.;  tc(1,7)=  0.;  
+      tc(2,4)= -tp;  tc(2,5)= -t;   tc(2,6)= -tp;  tc(2,7)= -tpp;  
+      tc(3,4)=  0.;  tc(3,5)= -tp;  tc(3,6)= -t;   tc(3,7)=  0.; 
+      tc(4,4)=  0.;  tc(4,5)= -t;   tc(4,6)= -tpp; tc(4,7)= -tp;  
+      tc(5,4)= -t;   tc(5,5)=  0.;  tc(5,6)= -t;   tc(5,7)= -t; 
+      tc(6,4)= -tpp; tc(6,5)= -t;   tc(6,6)=  0.;  tc(6,7)= -tp;  
+      tc(7,4)= -tp;  tc(7,5)= -t;   tc(7,6)= -tp;  tc(7,7)=  0.;  
       
      
       
       
       
       //assignation of the left-half 8 by 8 dtk: 
-      dtk(0,0)= -tpp*(emx+ex) ;      dtk(0,1)= -t*ex;              dtk(0,2)=  0.;           dtk(0,3)= -tp*ex;       
-      dtk(1,0)= -t*emx;              dtk(1,1)= -tpp*(emx+ex);      dtk(1,2)= -tp*emx;       dtk(1,3)= 0.;     
-      dtk(2,0)=  0.;                 dtk(2,1)= -tp*ex;             dtk(2,2)= -tpp*(emx+ex); dtk(2,3)= -t*ex;         
-      dtk(3,0)= -tp*emx;             dtk(3,1)=  0.;                dtk(3,2)= -t*emx;        dtk(3,3)= -tpp*(emx+ex);         
-      dtk(4,0)= -tpp*emy;            dtk(4,1)=  0.;                dtk(4,2)=  0.;           dtk(4,3)= -tp*ex;      
-      dtk(5,0)=  0.;                 dtk(5,1)= -tpp*emy;           dtk(5,2)= -tp*emx;       dtk(5,3)=  0.;         
-      dtk(6,0)= -t*emy;              dtk(6,1)= -tp*(emy + ex*emy); dtk(6,2)= -tpp*emy;      dtk(6,3)=  0.;         
-      dtk(7,0)= -tp*(emy + emx*emy); dtk(7,1)= -t*emy;             dtk(7,2)=  0.;           dtk(7,3)= -tpp*emy;         
+      dtk(0,0)=  0.;                      dtk(0,1)= -tp*emx;                    dtk(0,2)=  0.;                      dtk(0,3)= -tp*ey;       
+      dtk(1,0)= -tp*ex;                   dtk(1,1)=  0.;                        dtk(1,2)=  0.;                      dtk(1,3)= -tpp*(ey + ex + ey*ex);     
+      dtk(2,0)=  0.;                      dtk(2,1)=  0.;                        dtk(2,2)=  0.;                      dtk(2,3)=  0.;         
+      dtk(3,0)= -tp*emy;                  dtk(3,1)= -tpp*(emx + emy + emx*emy); dtk(3,2)=  0.;                      dtk(3,3)=  0.;         
+      dtk(4,0)= -t*ex;                    dtk(4,1)=  0.;                        dtk(4,2)= -tp*ex;                   dtk(4,3)= -t*ex;      
+      dtk(5,0)= -tpp*(ex + emy + ex*emy); dtk(5,1)= -tp*emy;                    dtk(5,2)=  0.;                      dtk(5,3)= -tp*ex;         
+      dtk(6,0)= -t*emy;                   dtk(6,1)= -t*emy;                     dtk(6,2)= -tp*emy;                  dtk(6,3)=  0.;         
+      dtk(7,0)= -t*ex*emy;                dtk(7,1)= -t*emy;                     dtk(7,2)= -tpp*(ex + emy + ex*emy); dtk(7,3)= -t*ex;         
             
       //Right-half :
-      dtk(0,4)= -tpp*ey;       dtk(0,5)=  0.;           dtk(0,6)= -t*ey;             dtk(0,7)= -tp*(ey + ey*ex);     
-      dtk(1,4)=  0.;           dtk(1,5)= -tpp*ey;       dtk(1,6)= -tp*(ey + ey*emx); dtk(1,7)= -t*ey;     
-      dtk(2,4)=  0.;           dtk(2,5)= -tp*ex;        dtk(2,6)= -tpp*ey;           dtk(2,7)=  0.;     
-      dtk(3,4)= -tp*emx;       dtk(3,5)=  0.;           dtk(3,6)=  0.;               dtk(3,7)= -tpp*ey; 
-      dtk(4,4)= -tpp*(emx+ex); dtk(4,5)= -t*ex;         dtk(4,6)=  0.;               dtk(4,7)= -tp*ex;  
-      dtk(5,4)= -t*emx;        dtk(5,5)= -tpp*(emx+ex); dtk(5,6)= -tp*emx;           dtk(5,7)=  0.;     
-      dtk(6,4)=  0.;           dtk(6,5)= -tp*ex;        dtk(6,6)= -tpp*(emx+ex);     dtk(6,7)= -t*ex;     
-      dtk(7,4)= -tp*emx;       dtk(7,5)=  0.;           dtk(7,6)= -t*emx;            dtk(7,7)= -tpp*(emx+ex);     
+      dtk(0,4)= -t*emx;                     dtk(0,5)= -tpp*(emx + ey + emx*ey); dtk(0,6)= -t*ey;                  dtk(0,7)= -t*emx*ey;     
+      dtk(1,4)=  0.;                        dtk(1,5)= -tp*ey;                   dtk(1,6)= -t*ey;                  dtk(1,7)= -t*ey;     
+      dtk(2,4)= -tp*emx;                    dtk(2,5)=  0.;                      dtk(2,6)= -tp*ey;                 dtk(2,7)= -tpp*(ey + emx + emx*ey);     
+      dtk(3,4)= -t*emx;                     dtk(3,5)= -tp*emx;                  dtk(3,6)=  0.;                    dtk(3,7)= -t*emx; 
+      dtk(4,4)=  0.;                        dtk(4,5)=  0.;                      dtk(4,6)= -tpp*(ex + ey + ex*ey); dtk(4,7)= -tp*ey;  
+      dtk(5,4)=  0.;                        dtk(5,5)=  0.;                      dtk(5,6)=  0.;                    dtk(5,7)=  0.;     
+      dtk(6,4)= -tpp*(emx + emy + emx*emy); dtk(6,5)=  0.;                      dtk(6,6)=  0.;                    dtk(6,7)= -tp*emx;     
+      dtk(7,4)= -tp*emy;                    dtk(7,5)=  0.;                      dtk(7,6)= -tp*ex;                 dtk(7,7)=  0.;     
             
       
       
@@ -143,48 +143,48 @@ typedef struct Model {
       
       
       //used for exact lattice and compact tiling (left-half) :
-      tc2(0,0)=  0.;  tc2(0,1)=  t;   tc2(0,2)=  t;   tc2(0,3)= -tp;   
-      tc2(1,0)=  t;   tc2(1,1)=  0.;  tc2(1,2)= -tp;  tc2(1,3)=  t;  
-      tc2(2,0)=  t;   tc2(2,1)= -tp;  tc2(2,2)=  0.;  tc2(2,3)=  t;    
-      tc2(3,0)= -tp;  tc2(3,1)=  t;   tc2(3,2)=  t;   tc2(3,3)=  0.;   
-      tc2(4,0)= -tpp; tc2(4,1)=  0.;  tc2(4,2)=  t;   tc2(4,3)= -tp;   
-      tc2(5,0)=  0.;  tc2(5,1)= -tpp; tc2(5,2)= -tp;  tc2(5,3)=  t;   
-      tc2(6,0)=  0.;  tc2(6,1)=  0.;  tc2(6,2)= -tpp; tc2(6,3)=  0.;   
-      tc2(7,0)=  0.;  tc2(7,1)=  0.;  tc2(7,2)=  0.;  tc2(7,3)= -tpp;   
+      tc2(0,0)=  0.;  tc2(0,1)= -tp;  tc2(0,2)=  t;   tc2(0,3)= -tp;   
+      tc2(1,0)= -tp;  tc2(1,1)=  0.;  tc2(1,2)=  t;   tc2(1,3)= -tpp;  
+      tc2(2,0)=  t;   tc2(2,1)=  t;   tc2(2,2)=  0.;  tc2(2,3)=  t;    
+      tc2(3,0)= -tp;  tc2(3,1)= -tpp; tc2(3,2)=  t;   tc2(3,3)=  0.;   
+      tc2(4,0)=  0.;  tc2(4,1)=  t;   tc2(4,2)= -tp;  tc2(4,3)=  0.;   
+      tc2(5,0)= -tpp; tc2(5,1)= -tp;  tc2(5,2)=  t;   tc2(5,3)= -tp;   
+      tc2(6,0)=  0.;  tc2(6,1)=  0.;  tc2(6,2)= -tp;  tc2(6,3)=  t;   
+      tc2(7,0)=  0.;  tc2(7,1)=  0.;  tc2(7,2)= -tpp; tc2(7,3)=  0.;   
       
       //right-half :   
-      tc2(0,4)= -tpp; tc2(0,5)=  0.;  tc2(0,6)=  0.;  tc2(0,7)=  0.;  
-      tc2(1,4)=  0.;  tc2(1,5)= -tpp; tc2(1,6)=  0.;  tc2(1,7)=  0.;  
-      tc2(2,4)=  t;   tc2(2,5)= -tp;  tc2(2,6)= -tpp; tc2(2,7)=  0.;  
-      tc2(3,4)= -tp;  tc2(3,5)=  t;   tc2(3,6)=  0.;  tc2(3,7)= -tpp; 
-      tc2(4,4)=  0.;  tc2(4,5)=  t;   tc2(4,6)=  t;   tc2(4,7)= -tp;  
-      tc2(5,4)=  t;   tc2(5,5)=  0.;  tc2(5,6)= -tp;  tc2(5,7)=  t; 
-      tc2(6,4)=  t;   tc2(6,5)= -tp;  tc2(6,6)=  0.;  tc2(6,7)=  t;  
-      tc2(7,4)= -tp;  tc2(7,5)=  t;   tc2(7,6)=  t;   tc2(7,7)=  0.;  
+      tc2(0,4)=  0.;  tc2(0,5)= -tpp; tc2(0,6)=  0.;  tc2(0,7)=  0.;  
+      tc2(1,4)=  t;   tc2(1,5)= -tp;  tc2(1,6)=  0.;  tc2(1,7)=  0.;  
+      tc2(2,4)= -tp;  tc2(2,5)=  t;   tc2(2,6)= -tp;  tc2(2,7)= -tpp;  
+      tc2(3,4)=  0.;  tc2(3,5)= -tp;  tc2(3,6)=  t;   tc2(3,7)=  0.; 
+      tc2(4,4)=  0.;  tc2(4,5)=  t;   tc2(4,6)= -tpp; tc2(4,7)= -tp;  
+      tc2(5,4)=  t;   tc2(5,5)=  0.;  tc2(5,6)=  t;   tc2(5,7)=  t; 
+      tc2(6,4)= -tpp; tc2(6,5)=  t;   tc2(6,6)=  0.;  tc2(6,7)= -tp;  
+      tc2(7,4)= -tp;  tc2(7,5)=  t;   tc2(7,6)= -tp;  tc2(7,7)=  0.;  
 
 
 
 
 
       //used for exact lattice (Left-half) :
-      dtk2(0,0)= -tpp*(emx+ex) ;      dtk2(0,1)=  t*ex;              dtk2(0,2)=  0.;           dtk2(0,3)= -tp*ex;       
-      dtk2(1,0)=  t*emx;              dtk2(1,1)= -tpp*(emx+ex);      dtk2(1,2)= -tp*emx;       dtk2(1,3)=  0.;     
-      dtk2(2,0)=  0.;                 dtk2(2,1)= -tp*ex;             dtk2(2,2)= -tpp*(emx+ex); dtk2(2,3)=  t*ex;         
-      dtk2(3,0)= -tp*emx;             dtk2(3,1)=  0.;                dtk2(3,2)=  t*emx;        dtk2(3,3)= -tpp*(emx+ex);         
-      dtk2(4,0)= -tpp*emy;            dtk2(4,1)=  0.;                dtk2(4,2)=  0.;           dtk2(4,3)= -tp*ex;      
-      dtk2(5,0)=  0.;                 dtk2(5,1)= -tpp*emy;           dtk2(5,2)= -tp*emx;       dtk2(5,3)=  0.;         
-      dtk2(6,0)=  t*emy;              dtk2(6,1)= -tp*(emy + ex*emy); dtk2(6,2)= -tpp*emy;      dtk2(6,3)=  0.;         
-      dtk2(7,0)= -tp*(emy + emx*emy); dtk2(7,1)=  t*emy;             dtk2(7,2)=  0.;           dtk2(7,3)= -tpp*emy;         
+      dtk2(0,0)=  0.;                      dtk2(0,1)= -tp*emx;                    dtk2(0,2)=  0.;                      dtk2(0,3)= -tp*ey;       
+      dtk2(1,0)= -tp*ex;                   dtk2(1,1)=  0.;                        dtk2(1,2)=  0.;                      dtk2(1,3)= -tpp*(ey + ex + ey*ex);     
+      dtk2(2,0)=  0.;                      dtk2(2,1)=  0.;                        dtk2(2,2)=  0.;                      dtk2(2,3)=  0.;         
+      dtk2(3,0)= -tp*emy;                  dtk2(3,1)= -tpp*(emx + emy + emx*emy); dtk2(3,2)=  0.;                      dtk2(3,3)=  0.;         
+      dtk2(4,0)=  t*ex;                    dtk2(4,1)=  0.;                        dtk2(4,2)= -tp*ex;                   dtk2(4,3)=  t*ex;      
+      dtk2(5,0)= -tpp*(ex + emy + ex*emy); dtk2(5,1)= -tp*emy;                    dtk2(5,2)=  0.;                      dtk2(5,3)= -tp*ex;         
+      dtk2(6,0)=  t*emy;                   dtk2(6,1)=  t*emy;                     dtk2(6,2)= -tp*emy;                  dtk2(6,3)=  0.;         
+      dtk2(7,0)=  t*ex*emy;                dtk2(7,1)=  t*emy;                     dtk2(7,2)= -tpp*(ex + emy + ex*emy); dtk2(7,3)=  t*ex;         
             
       //Right-half :
-      dtk2(0,4)= -tpp*ey;       dtk2(0,5)=  0.;           dtk2(0,6)=  t*ey;             dtk2(0,7)= -tp*(ey + ey*ex);     
-      dtk2(1,4)=  0.;           dtk2(1,5)= -tpp*ey;       dtk2(1,6)= -tp*(ey + ey*emx); dtk2(1,7)=  t*ey;     
-      dtk2(2,4)=  0.;           dtk2(2,5)= -tp*ex;        dtk2(2,6)= -tpp*ey;           dtk2(2,7)=  0.;     
-      dtk2(3,4)= -tp*emx;       dtk2(3,5)=  0.;           dtk2(3,6)=  0.;               dtk2(3,7)= -tpp*ey; 
-      dtk2(4,4)= -tpp*(emx+ex); dtk2(4,5)=  t*ex;         dtk2(4,6)=  0.;               dtk2(4,7)= -tp*ex;  
-      dtk2(5,4)=  t*emx;        dtk2(5,5)= -tpp*(emx+ex); dtk2(5,6)= -tp*emx;           dtk2(5,7)=  0.;     
-      dtk2(6,4)=  0.;           dtk2(6,5)= -tp*ex;        dtk2(6,6)= -tpp*(emx+ex);     dtk2(6,7)=  t*ex;     
-      dtk2(7,4)= -tp*emx;       dtk2(7,5)=  0.;           dtk2(7,6)=  t*emx;            dtk2(7,7)= -tpp*(emx+ex);     
+      dtk2(0,4)=  t*emx;                     dtk2(0,5)= -tpp*(emx + ey + emx*ey); dtk2(0,6)=  t*ey;                  dtk2(0,7)=  t*emx*ey;     
+      dtk2(1,4)=  0.;                        dtk2(1,5)= -tp*ey;                   dtk2(1,6)=  t*ey;                  dtk2(1,7)=  t*ey;     
+      dtk2(2,4)= -tp*emx;                    dtk2(2,5)=  0.;                      dtk2(2,6)= -tp*ey;                 dtk2(2,7)= -tpp*(ey + emx + emx*ey);     
+      dtk2(3,4)=  t*emx;                     dtk2(3,5)= -tp*emx;                  dtk2(3,6)=  0.;                    dtk2(3,7)=  t*emx; 
+      dtk2(4,4)=  0.;                        dtk2(4,5)=  0.;                      dtk2(4,6)= -tpp*(ex + ey + ex*ey); dtk2(4,7)= -tp*ey;  
+      dtk2(5,4)=  0.;                        dtk2(5,5)=  0.;                      dtk2(5,6)=  0.;                    dtk2(5,7)=  0.;     
+      dtk2(6,4)= -tpp*(emx + emy + emx*emy); dtk2(6,5)=  0.;                      dtk2(6,6)=  0.;                    dtk2(6,7)= -tp*emx;     
+      dtk2(7,4)= -tp*emy;                    dtk2(7,5)=  0.;                      dtk2(7,6)= -tp*ex;                 dtk2(7,7)=  0.;     
 
 
 
@@ -192,24 +192,24 @@ typedef struct Model {
 
 
       //used for compact tiling:
-      dtk3(0,0)=  0.;                 dtk3(0,1)=  t*ex;              dtk3(0,2)=  0.;           dtk3(0,3)= -tp*ex;       
-      dtk3(1,0)=  t*emx;              dtk3(1,1)=  0.;                dtk3(1,2)= -tp*emx;       dtk3(1,3)=  0.;     
-      dtk3(2,0)=  0.;                 dtk3(2,1)= -tp*ex;             dtk3(2,2)=  0.;           dtk3(2,3)=  t*ex;         
-      dtk3(3,0)= -tp*emx;             dtk3(3,1)=  0.;                dtk3(3,2)=  t*emx;        dtk3(3,3)=  0.;         
-      dtk3(4,0)= -tpp*emy;            dtk3(4,1)=  0.;                dtk3(4,2)=  0.;           dtk3(4,3)= -tp*ex;      
-      dtk3(5,0)=  0.;                 dtk3(5,1)= -tpp*emy;           dtk3(5,2)= -tp*emx;       dtk3(5,3)=  0.;         
-      dtk3(6,0)=  t*emy;              dtk3(6,1)= -tp*(emy + ex*emy); dtk3(6,2)= -tpp*emy;      dtk3(6,3)=  0.;         
-      dtk3(7,0)= -tp*(emy + emx*emy); dtk3(7,1)=  t*emy;             dtk3(7,2)=  0.;           dtk3(7,3)= -tpp*emy;         
+      dtk3(0,0)=  0.;                      dtk3(0,1)= -tp*emx;                    dtk3(0,2)=  0.;                      dtk3(0,3)= -tp*ey;       
+      dtk3(1,0)= -tp*ex;                   dtk3(1,1)=  0.;                        dtk3(1,2)=  0.;                      dtk3(1,3)= -tpp*(ey + ex + ey*ex);     
+      dtk3(2,0)=  0.;                      dtk3(2,1)=  0.;                        dtk3(2,2)=  0.;                      dtk3(2,3)=  0.;         
+      dtk3(3,0)= -tp*emy;                  dtk3(3,1)= -tpp*(emx + emy + emx*emy); dtk3(3,2)=  0.;                      dtk3(3,3)=  0.;         
+      dtk3(4,0)=  t*ex;                    dtk3(4,1)=  0.;                        dtk3(4,2)= -tp*ex;                   dtk3(4,3)=  t*ex;      
+      dtk3(5,0)= -tpp*(ex + emy + ex*emy); dtk3(5,1)= -tp*emy;                    dtk3(5,2)=  0.;                      dtk3(5,3)= -tp*ex;         
+      dtk3(6,0)=  t*emy;                   dtk3(6,1)=  t*emy;                     dtk3(6,2)= -tp*emy;                  dtk3(6,3)=  0.;         
+      dtk3(7,0)=  t*ex*emy;                dtk3(7,1)=  t*emy;                     dtk3(7,2)= -tpp*(ex + emy + ex*emy); dtk3(7,3)=  t*ex;         
             
       //Right-half :
-      dtk3(0,4)= -tpp*ey;       dtk3(0,5)=  0.;           dtk3(0,6)=  t*ey;             dtk3(0,7)= -tp*(ey + ey*ex);     
-      dtk3(1,4)=  0.;           dtk3(1,5)= -tpp*ey;       dtk3(1,6)= -tp*(ey + ey*emx); dtk3(1,7)=  t*ey;     
-      dtk3(2,4)=  0.;           dtk3(2,5)= -tp*ex;        dtk3(2,6)= -tpp*ey;           dtk3(2,7)=  0.;     
-      dtk3(3,4)= -tp*emx;       dtk3(3,5)=  0.;           dtk3(3,6)=  0.;               dtk3(3,7)= -tpp*ey; 
-      dtk3(4,4)=  0.;           dtk3(4,5)=  t*ex;         dtk3(4,6)=  0.;               dtk3(4,7)= -tp*ex;  
-      dtk3(5,4)=  t*emx;        dtk3(5,5)=  0.;           dtk3(5,6)= -tp*emx;           dtk3(5,7)=  0.;     
-      dtk3(6,4)=  0.;           dtk3(6,5)= -tp*ex;        dtk3(6,6)=  0.;               dtk3(6,7)=  t*ex;     
-      dtk3(7,4)= -tp*emx;       dtk3(7,5)=  0.;           dtk3(7,6)=  t*emx;            dtk3(7,7)=  0.;     
+      dtk3(0,4)=  t*emx;                     dtk3(0,5)= -tpp*(emx + ey + emx*ey); dtk3(0,6)=  t*ey;                  dtk3(0,7)=  t*emx*ey;     
+      dtk3(1,4)=  0.;                        dtk3(1,5)= -tp*ey;                   dtk3(1,6)=  t*ey;                  dtk3(1,7)=  t*ey;     
+      dtk3(2,4)= -tp*emx;                    dtk3(2,5)=  0.;                      dtk3(2,6)= -tp*ey;                 dtk3(2,7)= -tpp*(ey + emx + emx*ey);     
+      dtk3(3,4)=  t*emx;                     dtk3(3,5)= -tp*emx;                  dtk3(3,6)=  0.;                    dtk3(3,7)=  t*emx; 
+      dtk3(4,4)=  0.;                        dtk3(4,5)=  0.;                      dtk3(4,6)= -tpp*(ex + ey + ex*ey); dtk3(4,7)= -tp*ey;  
+      dtk3(5,4)=  0.;                        dtk3(5,5)=  0.;                      dtk3(5,6)=  0.;                    dtk3(5,7)=  0.;     
+      dtk3(6,4)= -tpp*(emx + emy + emx*emy); dtk3(6,5)=  0.;                      dtk3(6,6)=  0.;                    dtk3(6,7)= -tp*emx;     
+      dtk3(7,4)= -tp*emy;                    dtk3(7,5)=  0.;                      dtk3(7,6)= -tp*ex;                 dtk3(7,7)=  0.;     
     };
 
     void calculate_sigma(const complex<double> z)
@@ -264,8 +264,8 @@ typedef struct Model {
 
     void calculate_Gperiodized(const double px, const double py)
     {
-      double Ry[8] = {0.,0.,1.,1.,2.,2.,3.,3.};
-      double Rx[8] = {0.,1.,0.,1.,0.,1.,0.,1.};
+      double Ry[8] = {0.,1.,1.,1.,2.,2.,2.,3.};
+      double Rx[8] = {0.,-1.,0.,1.,-1.,0.,1.,0.};
       complex<double> z(OMEGA,ETA);
       
       calculate_dtk(px, py);
