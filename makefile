@@ -1,9 +1,9 @@
 
 COMPILER := gcc
 
-LINK := -llapack -lblas -lm -lstdc++ #-lcuba 
+LINK := -llapack -lblas -lm -lstdc++ -lcuba 
 
-OPTIONS := -Wall -std=c++11 -O2 #-DCUBA
+OPTIONS := -Wall -std=c++11 -O2 -DCUBA
 # other possible options:
 #  -DCUBA : to compile with cuba library (necessary for the dos task).
 #           Cuba must be installed and '-lcuba' should be added to 

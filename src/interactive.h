@@ -16,6 +16,8 @@
 #include <termios.h>
 
 #include "mdc.h"
+#include "density.h"
+
 #include "gnuplot_pipe.h"
 
 
@@ -240,17 +242,19 @@ void interactive_mdc(Model &model, MDC & mdc){
 
         else if(c==' ') { mdc.calculate(model); plotMDC(mdc,model.periodization,hImage); lineKind(0); valuesLast=values; printCompact(values,valuesLast); }
         else if(c=='t') { mdc.printFile(model, false);}                
+        else if(c=='y') { density(model); printCompact(values,valuesLast);}                
         else if(c=='h') {
           printHelp(step,mdc,decreaseParamKeys,increaseParamKeys);
           printCompact(values,valuesLast);
         }
         else if(c=='g') {
-          model.periodization = (model.periodization+1)%4;
+          model.periodization = (model.periodization+1)%5;
           mdc.calculate(model); plotMDC(mdc,model.periodization,hImage); lineKind(0);
-          if (model.periodization==0) printf("G periodization ");
-          if (model.periodization==1) printf("M periodization ");
-          if (model.periodization==2) printf("compact tiling  ");
-          if (model.periodization==3) printf("exact           ");
+          if (model.periodization==0) printf("G periodization    ");
+          if (model.periodization==1) printf("M periodization    ");
+          if (model.periodization==2) printf("compact tiling     ");
+          if (model.periodization==3) printf("exact              ");
+          if (model.periodization==4) printf("M per. Self-Energy ");
           fflush(stdout);
         }
 

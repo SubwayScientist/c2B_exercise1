@@ -17,6 +17,7 @@
 #include "dos.h"
 #include "interactive.h"
 
+
 using namespace std;
 
 
@@ -32,6 +33,8 @@ void printHelp(){
   printf("  Print dos.dat file. (output = 'dos.dat')\n");
   printf("  Plot in gnuplot with:\n");
   printf("  gnuplot> plot 'dos.dat' u 1:2\n\n");
+  printf("$ ./c2B d\n");
+  printf("  Calcualte density.\n\n");
 }
 
 int main(int argc, const char * argv[]) {
@@ -48,7 +51,15 @@ int main(int argc, const char * argv[]) {
 #endif
     }
     else if (opt=="i") {Model model; MDC mdc(200); interactive_mdc(model, mdc);}
-    else printHelp();
+    else if (opt=="d") {
+#ifdef CUBA
+      Model model; density(model);
+#else
+      printf("\n\nPlease compile with option -DCUBA and make sure you\n");
+      printf("have the numerical integration library Cuba installed. \n");
+      printf("Add -lcuba to the LINK. See README for more information.\n");
+#endif
+  } else printHelp();
   } else {
     printHelp();
   }

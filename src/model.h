@@ -32,6 +32,18 @@ typedef struct Model {
     int MAXEVAL=1000000;
     int MINEVAL=15000;
     int VERBOSE=0;
+    
+    //density parameters:
+    double smallScale=0.2;
+    double largeScale=10.0;
+    double w_domain=1.0;
+    double pole=3.0;
+    double beta=50.0;
+    
+    //int nMu=200;
+    //double muMin=-4.0;
+    //double muMax=4.0;
+        
 
     //
     int periodization = 0; //0=green, 1=cumulant, 2=compact tiling, 3=exact
@@ -69,7 +81,7 @@ typedef struct Model {
       readNumber(file,"tp",tp);
       readNumber(file,"tpp",tpp);
       readNumber(file,"DELTA",DELTA);
-      readNumber(file,"periodization",periodization); //0=green, 1=cumulant, 2=compact tiling, 3=exact
+      readNumber(file,"periodization",periodization); //0=green, 1=cumulant, 2=compact tiling, 3=exact, 4=M periodized self
 
       //cuba parameters:
       readNumber(file,"EPSREL",EPSREL);
@@ -184,7 +196,7 @@ typedef struct Model {
       calculate_dtk(px, py);
       calculate_sigma(z);
 
-      if (periodization==1){
+      if ((periodization==1) || (periodization==4)){
         calculate_cumulant(z);
         M_per = 0;
         for (int ii=0; ii<4; ++ii) {
@@ -195,8 +207,8 @@ typedef struct Model {
           }
         }
         double epsilon_k = -2*t*(cos(px)+cos(py)) -4*tp*cos(px)*cos(py) -2*tpp*(cos(2*px)+cos(2*py));
-        G_per = 1./((1./M_per) - epsilon_k);
-        //G_per = (z + MU - (1./M_per) );
+        if(periodization==1) {G_per = 1./((1./M_per) - epsilon_k);}
+        else {G_per = (z + MU - (1./M_per) );}
       }
       else {
         calculate_Gk(z);
