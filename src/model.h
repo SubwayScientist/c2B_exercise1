@@ -88,9 +88,9 @@ typedef struct Model {
       //Hk = tk matrix
     {
 
-      complex<double> ex(cos(-kx*2.), sin(kx*2.));
+      complex<double> ex(cos(-kx*2.+ky*2.), sin(-kx*2.+ky*2.));
       complex<double> emx = conj(ex);
-      complex<double> ey(cos(-ky*2.), sin(-ky*2.));
+      complex<double> ey(cos(-kx*2.-ky*2.), sin(-kx*2.-ky*2.));
       complex<double> emy = conj(ey);  
    
       //assignation of the left-half 8 by 8 tc:
