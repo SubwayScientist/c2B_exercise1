@@ -40,7 +40,8 @@ int gnuplot_image(FILE *plot_pipe, vector<double> data, int Nx, int Ny, float zM
   if(periodization==0)      {sprintf(title,"MDC - G periodization");}
   else if(periodization==1) {sprintf(title,"MDC - M periodization");}
   else if(periodization==2) {sprintf(title,"MDC - compact tiling ");}
-  else                      {sprintf(title,"MDC - exact          ");}
+  else if(periodization==3) {sprintf(title,"MDC - exact          ");}
+  else                      {sprintf(title,"MDC - M self         ");}
   
   fprintf(plot_pipe, "set title \"%s\"\n",title);
 

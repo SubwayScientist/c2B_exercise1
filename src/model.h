@@ -208,7 +208,7 @@ typedef struct Model {
         }
         double epsilon_k = -2*t*(cos(px)+cos(py)) -4*tp*cos(px)*cos(py) -2*tpp*(cos(2*px)+cos(2*py));
         if(periodization==1) {G_per = 1./((1./M_per) - epsilon_k);}
-        else {G_per = (z + MU - (1./M_per) );}
+        else {G_per = (z + MU - (1./M_per) );}      //calculate self-energy for M_per
       }
       else {
         calculate_Gk(z);

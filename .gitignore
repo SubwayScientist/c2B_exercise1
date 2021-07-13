@@ -7,3 +7,4 @@ example/mdc.dat
 *.tar.gz
 src/tmp.h
 sakai.gp
+plot.pdf
