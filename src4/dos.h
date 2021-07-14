@@ -8,10 +8,10 @@
 #pragma once
 
 #ifdef CUBA
+#include "cuba.h"
+#endif
 
 #include "model.h"
-
-#include "cuba.h"
 #include "utilities.h"
 #include <vector>
 using namespace std;
@@ -157,5 +157,5 @@ typedef struct DOS {
 
 } DOS;
 
-#endif
+
 

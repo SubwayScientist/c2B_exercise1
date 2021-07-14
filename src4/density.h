@@ -5,8 +5,8 @@
 #pragma once 
 
 #include "cuba.h"
-
 #include "model.h"
+
 
 // density (calculated on imaginary axis in complex plane) 
 
