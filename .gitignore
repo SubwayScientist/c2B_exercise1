@@ -6,4 +6,5 @@ example/mdc.dat
 *.out
 *.tar.gz
 src/tmp.h
-
+sakai.gp
+plot.pdf

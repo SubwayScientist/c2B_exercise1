@@ -1,9 +1,9 @@
 
 COMPILER := gcc
 
-LINK := -llapack -lblas -lm -lstdc++ #-lcuba 
+LINK := -llapack -lblas -lm -lstdc++ -lcuba 
 
-OPTIONS := -Wall -std=c++11 -O2 #-DCUBA
+OPTIONS := -Wall -std=c++11 -O2 -DCUBA
 # other possible options:
 #  -DCUBA : to compile with cuba library (necessary for the dos task).
 #           Cuba must be installed and '-lcuba' should be added to 
@@ -18,6 +18,6 @@ OPTIONS := -Wall -std=c++11 -O2 #-DCUBA
 
 EXEC = c2B
 
-all: src/c2B.cpp
-	$(COMPILER) $(OPTIONS) -o $(EXEC) src/c2B.cpp $(LINK)
+all: src3/c2B.cpp
+	$(COMPILER) $(OPTIONS) -o $(EXEC) src3/c2B.cpp $(LINK)
 
