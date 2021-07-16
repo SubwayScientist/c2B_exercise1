@@ -278,7 +278,7 @@ typedef struct Model {
       calculate_dtk(px, py);
       calculate_sigma(z);
 
-      if (periodization==1){
+      if ((periodization==1) || (periodization==4)){
         calculate_cumulant(z);
         M_per = 0;
         for (int ii=0; ii<8; ++ii) {
@@ -289,7 +289,8 @@ typedef struct Model {
           }
         }
         double epsilon_k = -2*t*(cos(px)+cos(py)) -4*tp*cos(px)*cos(py) -2*tpp*(cos(2*px)+cos(2*py));
-        G_per = 1./((1./M_per) - epsilon_k);
+        if(periodization==1) {G_per = 1./((1./M_per) - epsilon_k);}
+        else {G_per = (z + MU - (1./M_per) );}      //calculate self-energy for M_per
       }
       else {
         calculate_Gk(z);

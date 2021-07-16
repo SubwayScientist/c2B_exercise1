@@ -117,8 +117,8 @@ void cubaIntegrateDensity(Model & model, double* integral, double* error, int ve
     integral[0] += integralPortion[0]*model.w_domain*M_1_PI;
     error[0] += abs(errorPortion[0]*model.w_domain*M_1_PI);
     
-    integral[0] +=0.5; // for the spin
-    error[0] +=0.5;
+    integral[0] =0.8333333 + integral[0]/3; // for the spin
+    error[0] =0.8333333 + error[0]/3;
     
 }
 

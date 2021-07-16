@@ -18,6 +18,6 @@ OPTIONS := -Wall -std=c++11 -O2 -DCUBA
 
 EXEC = c2B
 
-all: src3/c2B.cpp
-	$(COMPILER) $(OPTIONS) -o $(EXEC) src3/c2B.cpp $(LINK)
+all: src2/c2B.cpp
+	$(COMPILER) $(OPTIONS) -o $(EXEC) src2/c2B.cpp $(LINK)
 
