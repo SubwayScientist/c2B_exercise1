@@ -15,11 +15,11 @@ Hamiltonian parameters that are the same for every figures :
     
 
 
-    | 2x2 Cluster     |    Nc=8 Cluster    |    4x3 Cluster   |   4x4 Cluster |         
- a) |   MU =          |     MU =           |     MU =         |    MU =       |
- b) |   MU =          |     MU =    -      |     MU =         |    MU =       |
- c) |   MU =          |     MU =    -      |     MU =         |    MU =       |     
- d) |   MU =          |     MU =    -      |     MU =         |    MU =       |
+    | 2x2 Cluster     |    Nc=8 Cluster    |    4x3 Cluster   |   4x4 Cluster   |         
+ a) |   MU =  -0.85   |     MU =  -0.90    |     MU =  -0.90  |    MU =  -1.05  |
+ b) |   MU =  -0.95   |     MU =    -      |     MU =  -0.90  |    MU =  -1.05  |
+ c) |   MU =  -1.00   |     MU =    -      |     MU =  -0.80  |    MU =  -0.90  |     
+ d) |   MU =  -1.06   |     MU =    -      |     MU =  -0.74  |    MU =  -0.70  |
 
 
 The Nc = 8 cluster needs to be updated as the M_per self-energy was completely asymmetrical.
@@ -27,4 +27,4 @@ The 4x3 cluster was also a bit asymmetrical, hence it would need to be looked at
 
 
 
-These figures were made on commit : 
+These figures were made on commit : 98d0ae5
